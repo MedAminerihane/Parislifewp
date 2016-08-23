@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="ParisLife.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ParisLife"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <Page.BottomAppBar >
+        <CommandBar Background="#265B85" Foreground="White">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+
+
+            <AppBarButton  Label="Back"  Foreground="White" Click="AppBarButton_Click">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="Assets/arrows.png"/>
+                </AppBarButton.Icon>
+
+            </AppBarButton>
+         
+            <AppBarButton Label="favoris" Foreground="White">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/fav.png"/>
+
+                </AppBarButton.Icon>
+
+            </AppBarButton>
+            <AppBarButton  Label="Connecter" Foreground="White">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/fb.png"/>
+
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            
+
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="#FF1088DA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Ellipse Height="100" Width="100" Margin="0,20,0,0">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Assets/seif.jpg" Stretch="UniformToFill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            
+            <TextBlock x:Name="name" TextWrapping="Wrap" Text="Seif eddine ben abda" HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="White"/>
+            <TextBlock x:Name="job" TextWrapping="Wrap" Text="Mobile software engineer" HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="White"/>
+            <TextBlock x:Name="email" TextWrapping="Wrap" Text="Seifeddine.benabda@esprit.tn" HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="White"/>
+            <TextBlock x:Name="phone" TextWrapping="Wrap" Text="0021621451992" HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="White"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Background="White" Height="1">
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Ellipse Height="100" Width="100" Margin="0,20,0,0">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Assets/rihane.jpg" Stretch="UniformToFill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock x:Name="name1" TextWrapping="Wrap" Text="Mohamed Amine Rihane" HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="White"/>
+            <TextBlock x:Name="job1" TextWrapping="Wrap" Text="Mobile software engineer" HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="White"/>
+            <TextBlock x:Name="email1" TextWrapping="Wrap" Text="medamine.rihane@esprit.tn" HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="White"/>
+            <TextBlock x:Name="phone1" TextWrapping="Wrap" Text="0021620475276" HorizontalAlignment="Center" Margin="0,10,0,0" Foreground="White"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

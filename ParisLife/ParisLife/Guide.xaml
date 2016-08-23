@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="ParisLife.Guide"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ParisLife"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+
+
+    <Page.BottomAppBar >
+        <CommandBar Background="#265B85" Foreground="White">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+
+
+            <AppBarButton  Label="Back"  Foreground="White" Click="AppBarButton_Click">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="Assets/arrows.png"/>
+                </AppBarButton.Icon>
+
+            </AppBarButton>
+          
+            <AppBarButton Label="favoris" Foreground="White">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/fav.png"/>
+
+                </AppBarButton.Icon>
+
+            </AppBarButton>
+            <AppBarButton  Label="Connecter" Foreground="White">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/fb.png"/>
+
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+           
+
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Grid_Loaded">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock   Text="Guide" Name="TypeP" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top"  FontFamily="Elephant" FontSize="32" FontWeight="Bold" />
+            <ListView  Name="places"  ItemsSource="{Binding}"  BorderThickness="1" Grid.Row="1" Tapped="places_Tapped"  >
+                <ListView.ItemTemplate  >
+
+
+                    <DataTemplate>
+
+                        <StackPanel  Margin="3" Orientation="Horizontal">
+                            <Image Source="{Binding reference}" Width="80" Height="80" Stretch="UniformToFill" />
+                            <StackPanel Margin="5,0,0,0">
+                                <TextBlock Text="{Binding name}" FontSize="18.667" FontWeight="Normal" FontFamily="Segoe WP Black" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding vicinity}" Foreground="#FF575757" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding etat}" Foreground="#FF727272" FontSize="13.333" />
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

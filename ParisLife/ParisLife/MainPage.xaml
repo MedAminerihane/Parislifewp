@@ -1,0 +1,213 @@
+﻿<Page
+    x:Class="ParisLife.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ParisLife"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fbsdk="using:winsdfkb"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+
+   
+   <Page.BottomAppBar >
+        <CommandBar Background="#265B85" Foreground="White">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+
+
+            <AppBarButton  Label="Back" Click="AppBarButton_Click_1" Foreground="White">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="Assets/arrows.png"/>
+                </AppBarButton.Icon>
+
+            </AppBarButton>
+            <AppBarButton  Label="A propos" Click="AppBarButton_Click" Foreground="White">
+
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/about.png"/>
+
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="favoris" Foreground="White" Click="AppBarButton_Click_4">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/fav.png"/>
+
+                </AppBarButton.Icon>
+                
+            </AppBarButton>
+            <AppBarButton  Name="fbcon"  Label="connexion" Foreground="White" Click="AppBarButton_Click_3">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/fb.png"/>
+
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton  Label="Refresh" Click="AppBarButton_Click_2" Foreground="White">
+             
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/refresh.png"/>
+
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+        </CommandBar>
+    </Page.BottomAppBar> 
+
+
+    
+    <Grid Loaded="Grid_Loaded">
+
+     
+
+        <Hub   Background="AliceBlue" >
+
+            <HubSection  Header="Actualités" Name="EventList"  DataContext="{Binding}">
+
+
+
+
+
+                <DataTemplate >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                       
+
+                    </Grid.RowDefinitions>
+                  <!--  <Image Source="Assets/weather.png" Stretch="UniformToFill"  Width="320" Height="150" Grid.Row="0"  />-->
+                        <StackPanel Height="120"  Width="340"  Background="#05AEE5" Margin="2,2,2,5" >
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,30,0">
+
+                                
+                                <Image Name="ResultImage" Width="60" Height="60" Loaded="ResultImage_Loaded"  />
+                            </StackPanel>
+                            <TextBlock Name="Pay" Text="PARIS" Foreground="White" FontSize="29.333" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"  />
+
+                        </StackPanel>
+
+
+                           
+                       
+
+                        <ListView     ItemsSource="{Binding }"   Width="340" Grid.Row="1" Tapped="ListView_Tapped_1" >
+                                <ListView.ItemTemplate >
+
+
+                                    <DataTemplate >
+                            
+                                        <StackPanel  Margin="3" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                        <Image Source="{Binding Image}" Stretch="UniformToFill"  />
+                                        <TextBlock Text="{Binding ArticleName}" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Description}" FontSize="14"   TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding DatePub}" FontSize="11" Foreground="Gray"  HorizontalAlignment="Right" />
+                                        <Image Source="Assets/share.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="50" Tapped="Image_Tapped"   />
+
+                                    </StackPanel>
+                            
+                            </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+
+
+
+
+
+
+
+
+                </Grid>
+            </DataTemplate>
+
+            </HubSection>
+            <HubSection Header="Evenement"  Name="EventSection"  DataContext="{Binding}" >
+                <DataTemplate>
+
+
+
+                    <ListView  Width="340" ItemsSource="{Binding }"  BorderThickness="1" Tapped="ListView_Tapped" >
+                        <ListView.ItemTemplate  >
+
+
+                                <DataTemplate>
+
+                                    <StackPanel  Margin="5" Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" Width="80" Height="80"  Stretch="UniformToFill" />
+                                        <StackPanel Margin="5,0,0,0">
+                                        <TextBlock Text="{Binding Nom}" FontSize="17.333" FontWeight="Bold" FontFamily="Lucida Calligraphy"  TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Description}" Foreground="#FF575757" TextWrapping="Wrap" FontSize="13.333" />
+                                        <TextBlock Text="{Binding Lieu}" Foreground="#FF727272" FontSize="12"  TextWrapping="Wrap" />
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    
+
+
+
+
+
+
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Guide">
+                <DataTemplate>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Width="100" Height="100" Margin="3" Background="#05668D" Tag="cafe" Tapped="StackPanel_Tapped">
+
+                            <Image Source="Assets/coffe.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1" Width="100" Height="100" Margin="3" Background="#671934"  Tag="bar" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/bar.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="2" Width="100" Height="100" Margin="3" Background="#F991CC" Tag="bank" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/bank.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="3" Width="100" Height="100" Margin="3" Background="#53599A" Tag="library" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/library.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="0" Width="100" Height="100" Margin="3" Background="#FFA69E" Tag="food" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/resto.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="1" Width="100" Height="100" Margin="3" Background="#FF236FAE" Tag="museum" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/museum.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="2" Width="100" Height="100" Margin="3" Background="#00A8E8" Tag="lodging" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/hotel.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="3" Width="100" Height="100" Margin="3" Background="Purple" Tag="hopital" Tapped="StackPanel_Tapped">
+                            <Image Source="Assets/hospital.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+
+                        </StackPanel>
+                    </Grid>
+                    
+
+                </DataTemplate>
+            </HubSection>
+       
+    </Hub>
+       
+    </Grid>
+</Page>
